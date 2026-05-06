@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# install.sh — установка плагинов my-zodiac-ai/claude-plugins
+# install.sh — установка плагинов my-zodiac-ai/mzai-plugins
 # =============================================================================
 # Использование:
 #   ./install.sh              — установить все плагины
@@ -108,7 +108,7 @@ uninstall_plugin() {
 
 # ─── entrypoint ───────────────────────────────────────────────────────────────
 main() {
-  log_header "🔌 my-zodiac-ai/claude-plugins installer"
+  log_header "🔌 my-zodiac-ai/mzai-plugins installer"
 
   if [ "${1:-}" = "--list" ]; then
     log_header "Доступные плагины:"

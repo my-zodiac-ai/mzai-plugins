@@ -1,4 +1,4 @@
-# my-zodiac-ai/claude-plugins
+# my-zodiac-ai/mzai-plugins
 
 Кастомные плагины и скиллы для Claude Code и Cowork — специально под стек My Zodiac AI.
 
@@ -26,8 +26,8 @@
 ### Быстрый старт
 
 ```bash
-git clone https://github.com/my-zodiac-ai/claude-plugins.git
-cd claude-plugins
+git clone https://github.com/my-zodiac-ai/mzai-plugins.git
+cd mzai-plugins
 chmod +x install.sh
 ./install.sh
 ```
@@ -120,7 +120,7 @@ git pull
 ## Структура репозитория
 
 ```
-claude-plugins/
+mzai-plugins/
 ├── plugins/
 │   ├── zodiac-dev-toolkit/
 │   │   ├── .claude-plugin/
@@ -157,4 +157,4 @@ claude-plugins/
 - **Cowork (desktop):** `~/Library/Application Support/Claude/plugins/<имя>/`
 
 Скрипт `install.sh` определяет какой клиент установлен и копирует папки в нужное место.
-# claude-plugins
+# mzai-plugins
