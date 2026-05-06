@@ -1,0 +1,21 @@
+{
+  "_comment": "Drop-in replacement for /Users/valentinyakovlev/projects/astro-ai-landing/.claude/settings.json — block-sensitive + frontmatter are now plugin-managed. oxfmt is project-unique (not in plugin) so kept inline.",
+  "enabledPlugins": {
+    "zodiac-hooks-pack@mzai-plugins": true,
+    "speckit@mzai-plugins": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "_comment": "oxfmt is astro-ai-landing-specific (oxc tooling). Not yet in plugin — keep inline.",
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json,subprocess,os; d=json.load(sys.stdin); p=d.get('tool_input',{}).get('file_path',''); [subprocess.run(['pnpm','exec','oxfmt','--write',p],capture_output=True,cwd=os.environ.get('CLAUDE_PROJECT_DIR','.')) for _ in [1] if p and any(p.endswith(x) for x in ['.ts','.js']) and os.path.exists(p)]\""
+          }
+        ]
+      }
+    ]
+  }
+}

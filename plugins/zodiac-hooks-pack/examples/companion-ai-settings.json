@@ -1,0 +1,14 @@
+{
+  "_comment": "Drop-in replacement for /Users/valentinyakovlev/projects/companion-ai/.claude/settings.json — eslint + Prisma reminder are now plugin-managed. No inline hooks needed.",
+  "enabledPlugins": {
+    "zodiac-hooks-pack@mzai-plugins": true,
+    "speckit@mzai-plugins": true,
+    "speckit-product-forge@mzai-plugins": true,
+    "javascript-typescript@claude-code-workflows": true,
+    "backend-development@claude-code-workflows": true,
+    "code-review-ai@claude-code-workflows": true
+  },
+  "hooks": {
+    "_comment": "All hooks come from zodiac-hooks-pack. PostToolUse(eslint), PreToolUse(prisma reminder + sensitive files block) are now centralized."
+  }
+}

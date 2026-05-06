@@ -1,0 +1,26 @@
+{
+  "skill_name": "api-changelog",
+  "evals": [
+    {
+      "id": 0,
+      "name": "auth-telemetry-changelog",
+      "prompt": "Сгенерируй API changelog для ветки 001-auth-v2-telemetry — там были изменения в контроллерах авторизации и DTO. Хочу понять, есть ли breaking changes перед мержем.",
+      "expected_output": "Structured Keep a Changelog entry in docs/api-changelog/ with proper categorization of auth controller and DTO changes, breaking change detection, and migration notes if applicable",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "auth-sprint1-small-changelog",
+      "prompt": "Generate API changelog for the changes in branch 001-auth-v2-sprint1 compared to main. Only 2 files changed so it should be quick.",
+      "expected_output": "Concise changelog for a small diff — should still follow the full format but with fewer entries. Should correctly identify that it's a small change set.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "notifications-large-changelog",
+      "prompt": "Нужен полный API changelog для ветки 001-notifications-v2 — это большая фича с кучей новых контроллеров и DTO. Особенно важно найти все breaking changes, потому что у нас мобильные клиенты на старой версии API.",
+      "expected_output": "Comprehensive changelog with many entries across Added/Changed/Removed/Breaking sections. Should handle 73 changed files gracefully, possibly suggesting to narrow scope. Migration notes for all breaking changes.",
+      "files": []
+    }
+  ]
+}

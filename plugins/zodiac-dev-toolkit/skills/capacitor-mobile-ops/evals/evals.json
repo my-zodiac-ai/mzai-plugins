@@ -1,0 +1,23 @@
+{
+  "skill_name": "capacitor-mobile-ops",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Нужно подготовить релизную сборку Android для Play Store. versionCode сейчас 220, нужно поднять до 221 и собрать подписанный AAB. Подскажи точные шаги и файлы которые нужно изменить.",
+      "expected_output": "Step-by-step guide covering: 1) edit build.gradle to bump versionCode to 221, 2) correct signing config with env-based secrets recommendation, 3) build commands (pnpm build:android, cap sync, gradlew bundleProdRelease), 4) mentions the upload-key.keystore and prod flavor",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Хочу добавить @capacitor/camera плагин в проект и заодно обновить иконки и splash screens — у меня есть новые исходники в формате PNG. Как это правильно сделать?",
+      "expected_output": "Guide covering: 1) pnpm add @capacitor/camera, 2) cap sync, 3) platform-specific steps (pod install for iOS, auto-registration for Android), 4) @capacitor/assets generate for splash/icons with correct source file naming and sizes, 5) mentions the resources/ directory structure",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Настрой GitHub Actions: на каждый PR собирался debug APK (dev flavor), а на теги v* — release AAB для Play Store и IPA для TestFlight. Учти что у нас Quasar + Capacitor + pnpm монорепо.",
+      "expected_output": "Three GitHub Actions workflow YAML files: 1) android-debug.yml triggered on PR with dev flavor APK build, 2) android-release.yml triggered on tags with signed AAB, 3) ios-testflight.yml triggered on tags with archive + upload. All should use pnpm, node 22, java 17, correct paths for the monorepo structure, and reference GitHub secrets for signing.",
+      "files": []
+    }
+  ]
+}

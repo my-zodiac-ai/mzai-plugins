@@ -1,0 +1,37 @@
+{
+  "_comment": "Drop-in replacement for /Users/valentinyakovlev/projects/my_zodiac_ai/.claude/settings.json — preserves Serena reminders + adds plugin-managed hooks. Project-specific UserPromptSubmit (Serena prompt reminder) is kept inline; everything else delegated to zodiac-hooks-pack.",
+  "enabledPlugins": {
+    "zodiac-hooks-pack@mzai-plugins": true,
+    "zodiac-dev-toolkit@mzai-plugins": true,
+    "zodiac-quality-gate@mzai-plugins": true,
+    "zodiac-design-review@mzai-plugins": true,
+    "zodiac-research-lab@mzai-plugins": true,
+    "speckit@mzai-plugins": true,
+    "speckit-product-forge@mzai-plugins": true,
+    "astrology-data-validator@mzai-plugins": true
+  },
+  "hooks": {
+    "_comment": "All Edit/Write hooks (block-sensitive, eslint, tsc, prisma, gsap) come from zodiac-hooks-pack via plugin.json. Only project-unique hooks live here.",
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/serena-prompt-reminder.sh\""
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read(**/*.ts)",
+      "Read(**/*.tsx)",
+      "Read(**/*.vue)",
+      "Read(**/*.js)",
+      "Read(**/*.jsx)",
+      "Read(**/*.mjs)",
+      "Read(**/*.cjs)"
+    ]
+  }
+}

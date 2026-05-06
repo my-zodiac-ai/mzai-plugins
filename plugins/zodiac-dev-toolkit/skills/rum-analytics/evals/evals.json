@@ -1,0 +1,23 @@
+{
+  "skill_name": "rum-analytics",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Покажи мне реальные метрики CWV за последнюю неделю — хочу понять, где у нас хуже всего на мобильных устройствах. Сравни с Lighthouse.",
+      "expected_output": "HTML report with CWV p75 values from PostHog+NewRelic, device segmentation showing mobile vs desktop, synthetic vs real comparison table, and fix suggestions targeting worst mobile segments",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Our LCP seems to have regressed on the /horoscope/daily page after the last deploy. Can you check the real user data and tell me what happened? Also suggest specific code fixes.",
+      "expected_output": "Focused analysis of LCP on /horoscope/daily page, timeseries showing the regression point, comparison with previous period, device breakdown, and code-level fix suggestions referencing specific files in front/src/pages/horoscope/",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Run a full RUM performance analysis — I need the HTML report for the team standup. Focus on Android Chrome users because that's our biggest segment.",
+      "expected_output": "Full HTML report saved to reports/rum/, with Android/Chrome segment highlighted, all 5 CWV metrics covered, Lighthouse comparison always included, and actionable fixes with file paths",
+      "files": []
+    }
+  ]
+}

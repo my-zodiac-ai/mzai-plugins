@@ -1,0 +1,23 @@
+{
+  "skill_name": "mongodb-ops",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Мне нужно засидить базу dev-окружения — 10 тестовых юзеров с разными знаками зодиака, у пары из них premium подписка. Покажи что создашь перед вставкой.",
+      "expected_output": "Agent discovers the DB and schema via MCP, generates 10 users with astronomically correct zodiac signs matching birth dates, creates corresponding subscription records for premium users, shows the data plan before inserting, and uses insert-many with proper Mongoose-compatible documents.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Проверь индексы на коллекции users — есть ли что-то лишнее или недостающее? Сравни с тем что в Mongoose-схеме в коде.",
+      "expected_output": "Agent calls collection-indexes and collection-schema on users, reads the user.schema.ts file, cross-references DB indexes with Mongoose @Prop decorators that have index/unique, identifies gaps (missing indexes for query patterns) and redundancies, provides actionable recommendations.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Напиши агрегацию: сколько пользователей зарегистрировалось за каждый день последнего месяца, разбей по zodiacSign. Плюс покажи топ-3 знака.",
+      "expected_output": "Agent discovers the schema, builds a pipeline with $match (date range + isDeleted:false), $group by day + zodiacSign, $sort, then runs it. Separately builds a top-3 pipeline with $group by zodiacSign + $sort + $limit. Both pipelines execute successfully via MCP aggregate tool.",
+      "files": []
+    }
+  ]
+}

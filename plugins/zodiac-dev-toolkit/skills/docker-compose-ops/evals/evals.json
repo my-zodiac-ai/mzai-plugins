@@ -1,0 +1,23 @@
+{
+  "skill_name": "docker-compose-ops",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "поднять дев окружение и проверить что все сервисы живы",
+      "expected_output": "Runs docker compose up -d for the dev environment (docker-compose.yml), waits briefly, then performs a health check on all 5 services (mongo, redis, prometheus, alertmanager, grafana). Presents a formatted status table with health, ports, and uptime. If any service is unhealthy, auto-fetches its logs.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "redis keeps restarting, can you figure out what's wrong and show me the logs?",
+      "expected_output": "Runs diagnostic flow: checks redis container status, inspects health and exit code, fetches recent logs (last 50 lines), checks docker stats for memory usage. Identifies the likely cause (e.g., OOM, port conflict) and suggests a fix. Shows the actual log output filtered for errors.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "запусти e2e тесты в докере и покажи результат",
+      "expected_output": "Identifies the correct compose file (front/docker-compose.e2e.yml), starts the e2e environment with docker compose up -d, waits for services to be healthy (mongodb-test, redis-test, backend-test, frontend-test), then runs the playwright service. Shows the test output and a summary of pass/fail results.",
+      "files": []
+    }
+  ]
+}

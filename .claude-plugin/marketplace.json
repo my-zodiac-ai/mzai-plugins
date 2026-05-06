@@ -11,6 +11,11 @@
   },
   "plugins": [
     {
+      "name": "zodiac-hooks-pack",
+      "description": "Reusable Claude Code hooks — sensitive-file blocking, ESLint, tsc, Prisma reminders, GSAP guard, @nuxt/content frontmatter, Serena nudges, i18n hardcoded-string warnings. Self-detecting, fail-soft, individually disable-able.",
+      "source": "./plugins/zodiac-hooks-pack"
+    },
+    {
       "name": "zodiac-dev-toolkit",
       "description": "Complete engineering toolkit for My Zodiac AI — NestJS + Vue 3 + Quasar monorepo with EDA/DDD/FSD patterns",
       "source": "./plugins/zodiac-dev-toolkit"

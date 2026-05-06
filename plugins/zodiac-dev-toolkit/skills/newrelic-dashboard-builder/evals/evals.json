@@ -1,0 +1,48 @@
+{
+  "skill_name": "newrelic-dashboard-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to see how much we're spending on LLM tokens per model over the last 2 weeks, broken down daily. Also show me which model has the worst latency P99.",
+      "expected_output": "Two validated NRQL queries: one with TIMESERIES 1 day showing tokens per model, another showing P99 latency per model. Both scoped to My_Zodiac_AI_prod app, using LlmChatCompletionSummary event type with backtick-quoted attributes.",
+      "files": [],
+      "expectations": [
+        "Output contains a NRQL query using LlmChatCompletionSummary event type",
+        "Token query uses backtick-quoted attribute `response.usage.total_tokens`",
+        "Token query includes TIMESERIES and FACET by model",
+        "P99 query uses percentile(duration, 99) or similar",
+        "Both queries include WHERE appName = 'My_Zodiac_AI_prod'",
+        "Queries were validated via run_nrql_query MCP tool"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create a dashboard for monitoring our MongoDB performance — I want to see slow queries, connection pool health, and command breakdown. Export the JSON so I can import it.",
+      "expected_output": "A NerdGraph-compatible dashboard JSON file with widgets covering: slow query table, connection pool line chart, command breakdown bar chart. Billboard KPIs at top. Grid positions don't overlap. Account ID 7715788.",
+      "files": [],
+      "expectations": [
+        "Output includes a saved JSON file with valid NerdGraph dashboard structure",
+        "Dashboard JSON contains accountId 7715788 in nrqlQueries",
+        "Dashboard has widgets for slow queries (table visualization)",
+        "Dashboard has widgets for connection pool (line or area visualization)",
+        "Dashboard has widgets for command breakdown (bar visualization)",
+        "Widget grid positions use column/row/width/height and fit within 12-column grid",
+        "At least one billboard widget with thresholds is present"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Set up SLI/SLO monitoring for our API availability. Target 99.9% over 30 days. I want an error budget tracker and a burn-rate chart.",
+      "expected_output": "SLI definition with availability ratio query, error budget calculation NRQL, burn-rate timeseries NRQL. Dashboard page or JSON with billboard for current SLI %, billboard for error budget remaining, line chart for SLI over time, line chart for burn rate.",
+      "files": [],
+      "expectations": [
+        "Output defines an SLI using httpResponseCode < 500 as good events",
+        "Error budget calculation uses (1 - 0.999) as the budget factor",
+        "A burn-rate or SLI-over-time query uses TIMESERIES",
+        "Output includes a dashboard JSON or structured dashboard page definition",
+        "SLO target of 99.9% is clearly stated in the output",
+        "Queries are scoped to My_Zodiac_AI_prod"
+      ]
+    }
+  ]
+}
