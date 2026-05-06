@@ -1,0 +1,21 @@
+{
+  "name": "speckit-product-forge",
+  "version": "1.5.0",
+  "description": "Product Forge v1.5.0 — Full product lifecycle for My Zodiac AI (NestJS 11 + Vue 3.5 + Quasar 2.18 + MongoDB 7 + Redis 7 + Capacitor 8). Drives features from problem discovery through research, product-spec, planning, implementation, verification, testing, and post-launch retrospective across 29 skills. Supports three feature modes (lite / standard / v-model) and adds v1.5.0 phases: i18n-harvest, migration-plan, monitoring-setup, experiment-design, portfolio, backfill, and feature-flag-cleanup.",
+  "author": {
+    "name": "Valentyn Yakovliev"
+  },
+  "keywords": [
+    "product-forge",
+    "speckit",
+    "lifecycle",
+    "research",
+    "specification",
+    "implementation",
+    "testing",
+    "release",
+    "v-model",
+    "my-zodiac-ai",
+    "astrology"
+  ]
+}

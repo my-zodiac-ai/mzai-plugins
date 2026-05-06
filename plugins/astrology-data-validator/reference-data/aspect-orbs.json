@@ -1,0 +1,85 @@
+{
+  "_comment": "Reference orb values for aspect validation. Compare against back/src/modules/astrology/common/configs/aspects.config.ts",
+  "default_orbs": {
+    "conjunction":    { "standard": 8, "sun_moon": 10 },
+    "opposition":     { "standard": 8, "sun_moon": 10 },
+    "trine":          { "standard": 8, "sun_moon": 8  },
+    "square":         { "standard": 7, "sun_moon": 8  },
+    "sextile":        { "standard": 6, "sun_moon": 6  },
+    "quincunx":       { "standard": 3, "sun_moon": 3  },
+    "semisquare":     { "standard": 2, "sun_moon": 2  },
+    "sesquiquadrate": { "standard": 2, "sun_moon": 2  }
+  },
+  "validation_cases": [
+    {
+      "description": "Exact conjunction — must detect",
+      "lon1": 0.0,
+      "lon2": 0.0,
+      "expected_aspect": "conjunction",
+      "expected_orb": 0.0
+    },
+    {
+      "description": "Conjunction within standard orb",
+      "lon1": 5.0,
+      "lon2": 0.0,
+      "expected_aspect": "conjunction",
+      "expected_orb": 5.0
+    },
+    {
+      "description": "Conjunction outside orb — no aspect",
+      "lon1": 12.0,
+      "lon2": 0.0,
+      "expected_aspect": null
+    },
+    {
+      "description": "Exact opposition",
+      "lon1": 0.0,
+      "lon2": 180.0,
+      "expected_aspect": "opposition",
+      "expected_orb": 0.0
+    },
+    {
+      "description": "Opposition across 0°/360° boundary",
+      "lon1": 10.0,
+      "lon2": 190.0,
+      "expected_aspect": "opposition",
+      "expected_orb": 0.0
+    },
+    {
+      "description": "Trine within orb",
+      "lon1": 0.0,
+      "lon2": 123.0,
+      "expected_aspect": "trine",
+      "expected_orb": 3.0
+    },
+    {
+      "description": "Square within orb",
+      "lon1": 0.0,
+      "lon2": 87.0,
+      "expected_aspect": "square",
+      "expected_orb": 3.0
+    },
+    {
+      "description": "Sextile within orb",
+      "lon1": 0.0,
+      "lon2": 57.0,
+      "expected_aspect": "sextile",
+      "expected_orb": 3.0
+    },
+    {
+      "description": "Conjunction at 360° wrap — Mercury at 357°, Venus at 5°",
+      "lon1": 357.0,
+      "lon2": 5.0,
+      "expected_aspect": "conjunction",
+      "expected_orb": 8.0,
+      "_note": "Must use shortest arc: diff = 8°, not 352°"
+    },
+    {
+      "description": "Opposition across 360° boundary",
+      "lon1": 2.0,
+      "lon2": 182.0,
+      "expected_aspect": "opposition",
+      "expected_orb": 0.0
+    }
+  ]
+}

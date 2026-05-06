@@ -1,0 +1,9 @@
+{
+  "name": "zodiac-research-lab",
+  "version": "0.1.0",
+  "description": "Deep feature research lab for My Zodiac AI — competitor analysis, UI/UX patterns, tech stack research, codebase analysis, metrics & impact assessment",
+  "author": {
+    "name": "Valentyn Yakovliev"
+  },
+  "keywords": ["research", "feature-analysis", "competitors", "ux", "zodiac"]
+}

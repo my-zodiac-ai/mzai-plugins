@@ -1,0 +1,93 @@
+{
+  "_comment": "Reference planetary positions for validation. Source: Swiss Ephemeris / JPL Horizons. Tolerances in degrees.",
+  "_tolerances": {
+    "Sun": 0.01,
+    "Moon": 0.10,
+    "Mercury": 0.05,
+    "Venus": 0.05,
+    "Mars": 0.02,
+    "Jupiter": 0.01,
+    "Saturn": 0.01,
+    "Uranus": 0.005,
+    "Neptune": 0.005,
+    "Pluto": 0.005
+  },
+  "test_cases": [
+    {
+      "name": "Spring Equinox 2024",
+      "description": "Sun enters Aries — Sun longitude should be exactly 0°",
+      "datetime_utc": "2024-03-20T03:06:00Z",
+      "julian_day": 2460389.629167,
+      "positions": {
+        "Sun": { "longitude": 0.0, "sign": "Aries", "signDegree": 0.0, "isRetrograde": false }
+      }
+    },
+    {
+      "name": "Winter Solstice 2024",
+      "description": "Sun enters Capricorn — Sun longitude should be exactly 270°",
+      "datetime_utc": "2024-12-21T09:20:00Z",
+      "julian_day": 2460665.889583,
+      "positions": {
+        "Sun": { "longitude": 270.0, "sign": "Capricorn", "signDegree": 0.0, "isRetrograde": false }
+      }
+    },
+    {
+      "name": "Full Moon March 2024",
+      "description": "Sun-Moon opposition (full moon). Moon approx 180° from Sun.",
+      "datetime_utc": "2024-03-25T07:00:00Z",
+      "julian_day": 2460394.791667,
+      "positions": {
+        "Sun": { "longitude": 5.08, "sign": "Aries", "signDegree": 5.08, "isRetrograde": false },
+        "Moon": { "longitude": 185.08, "sign": "Libra", "signDegree": 5.08, "isRetrograde": false }
+      },
+      "aspects_expected": [
+        { "planet1": "Sun", "planet2": "Moon", "type": "opposition", "orb_max": 0.5 }
+      ]
+    },
+    {
+      "name": "Saturn-Jupiter Great Conjunction 2020",
+      "description": "Tightest Jupiter-Saturn conjunction in 400 years. Landmark verifiable event.",
+      "datetime_utc": "2020-12-21T18:20:00Z",
+      "julian_day": 2459204.264583,
+      "positions": {
+        "Jupiter": { "longitude": 300.43, "sign": "Aquarius", "signDegree": 0.43, "isRetrograde": false },
+        "Saturn":  { "longitude": 300.49, "sign": "Aquarius", "signDegree": 0.49, "isRetrograde": false }
+      },
+      "aspects_expected": [
+        { "planet1": "Jupiter", "planet2": "Saturn", "type": "conjunction", "orb_max": 0.2 }
+      ]
+    },
+    {
+      "name": "Mercury Retrograde Station 2024",
+      "description": "Mercury stationary before going retrograde. Speed near 0, then negative.",
+      "datetime_utc": "2024-04-01T18:14:00Z",
+      "julian_day": 2460401.259028,
+      "positions": {
+        "Mercury": {
+          "longitude": 27.14,
+          "sign": "Aries",
+          "signDegree": 27.14,
+          "isRetrograde": false,
+          "speed_approx": 0.02,
+          "_note": "Speed near zero — station direct point. Should NOT be flagged retrograde yet."
+        }
+      }
+    },
+    {
+      "name": "Retrograde Mercury Mid-Station 2024",
+      "description": "Mercury clearly retrograde — speed should be negative.",
+      "datetime_utc": "2024-04-10T00:00:00Z",
+      "julian_day": 2460409.5,
+      "positions": {
+        "Mercury": {
+          "longitude": 20.0,
+          "sign": "Aries",
+          "signDegree": 20.0,
+          "isRetrograde": true,
+          "speed_approx": -1.3,
+          "_note": "Speed clearly negative — must be flagged as retrograde."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "zodiac-design-review",
+  "version": "0.1.0",
+  "description": "Comprehensive design review system for My Zodiac AI. Launches parallel agents for design critique, UX/UI review, accessibility audit, design system token analysis, and feature enhancement suggestions. Tailored for Vue 3 + Quasar + Cosmic Glass design system.",
+  "author": {
+    "name": "Valentyn Yakovliev"
+  },
+  "keywords": ["design", "review", "accessibility", "ux", "glass", "zodiac"]
+}

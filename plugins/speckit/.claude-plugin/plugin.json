@@ -1,0 +1,28 @@
+{
+  "name": "speckit",
+  "version": "0.5.0",
+  "description": "SpecKit — full feature lifecycle management from idea to implementation. Includes Product Forge: orchestrate problem discovery, research, product-spec, planning, implementation, verification, testing, security checks, API docs, and retrospectives with human-in-the-loop gates.",
+  "author": {
+    "name": "Valentyn Yakovliev"
+  },
+  "keywords": [
+    "speckit",
+    "specification",
+    "planning",
+    "implementation",
+    "verification",
+    "feature-lifecycle",
+    "fleet",
+    "v-model",
+    "cleanup",
+    "review",
+    "product-forge",
+    "research",
+    "problem-discovery",
+    "product-spec",
+    "tracking-plan",
+    "security-check",
+    "api-docs",
+    "retrospective"
+  ]
+}

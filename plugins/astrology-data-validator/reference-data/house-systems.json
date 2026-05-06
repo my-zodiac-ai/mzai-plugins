@@ -1,0 +1,48 @@
+{
+  "_comment": "Reference house data for validation. Tests cover Placidus defaults, equal house, polar fallback.",
+  "invariants": {
+    "house_count": 12,
+    "ascendant_index": 0,
+    "midheaven_index": 9,
+    "longitude_range": [0, 360],
+    "polar_fallback_latitude_threshold": 66.33
+  },
+  "equal_house_test": {
+    "description": "Equal house: ASC at 45° (15° Taurus). Each cusp exactly 30° apart.",
+    "asc_longitude": 45.0,
+    "expected_cusps": [45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345, 15],
+    "_note": "Cusp 12 wraps: 345 + 30 = 375 → 15°"
+  },
+  "polar_test_cases": [
+    {
+      "location": "Tromsø, Norway",
+      "latitude": 69.65,
+      "longitude": 18.96,
+      "expected_behavior": "Placidus_fails_use_fallback",
+      "valid_fallbacks": ["WHOLE_SIGN", "EQUAL"]
+    },
+    {
+      "location": "Helsinki, Finland",
+      "latitude": 60.17,
+      "longitude": 24.93,
+      "expected_behavior": "Placidus_valid"
+    },
+    {
+      "location": "North Pole",
+      "latitude": 90.0,
+      "longitude": 0.0,
+      "expected_behavior": "reject_or_fallback"
+    }
+  ],
+  "house_placement_test": {
+    "description": "Planet-in-house assignment with wraparound boundary",
+    "cusps": [340, 10, 40, 70, 100, 130, 160, 190, 220, 250, 280, 310],
+    "_note": "Cusp 1 = 340°, Cusp 2 = 10° — crosses 360°",
+    "test_planets": [
+      { "longitude": 355, "expected_house": 1, "_note": "Between 340° and 10°" },
+      { "longitude": 5,   "expected_house": 1, "_note": "Between 340° and 10° (wrap)" },
+      { "longitude": 15,  "expected_house": 2, "_note": "Past cusp 2 at 10°" },
+      { "longitude": 45,  "expected_house": 3, "_note": "Between cusp 2 (40°) and cusp 3 (70°)" }
+    ]
+  }
+}
