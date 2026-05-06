@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # =============================================================================
-# install.sh — установка плагинов my-zodiac-ai/mzai-plugins
+# install.sh — plugin installer for my-zodiac-ai/mzai-plugins
 # =============================================================================
-# Использование:
-#   ./install.sh              — установить все плагины
-#   ./install.sh zodiac-dev-toolkit speckit   — установить конкретные
-#   ./install.sh --list       — показать доступные плагины
-#   ./install.sh --uninstall  — удалить все установленные плагины этого репо
+# Usage:
+#   ./install.sh              — install all plugins
+#   ./install.sh zodiac-dev-toolkit speckit   — install specific plugins
+#   ./install.sh --list       — list available plugins
+#   ./install.sh --uninstall  — remove all installed plugins from this repo
 # =============================================================================
 
 set -euo pipefail
@@ -14,13 +14,13 @@ set -euo pipefail
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGINS_DIR="$REPO_DIR/plugins"
 
-# Путь куда Cowork/Claude хранит плагины на macOS
+# Paths where Cowork/Claude stores plugins on macOS
 # Claude Code (CLI): ~/.claude/plugins/
-# Cowork (desktop):  ~/Library/Application Support/Claude/plugins/ (remote-plugins sync)
+# Cowork (desktop):  ~/Library/Application Support/Claude/plugins/
 CLAUDE_CODE_PLUGINS="$HOME/.claude/plugins"
 COWORK_PLUGINS="$HOME/Library/Application Support/Claude/plugins"
 
-# ─── цвета ───────────────────────────────────────────────────────────────────
+# ─── colors ──────────────────────────────────────────────────────────────────
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -34,19 +34,19 @@ log_warn()    { echo -e "${YELLOW}⚠${RESET} $*"; }
 log_error()   { echo -e "${RED}✗${RESET} $*" >&2; }
 log_header()  { echo -e "\n${BOLD}$*${RESET}"; }
 
-# ─── определяем доступные плагины ─────────────────────────────────────────────
+# ─── list available plugins ───────────────────────────────────────────────────
 get_available_plugins() {
   ls "$PLUGINS_DIR"
 }
 
-# ─── определяем куда устанавливать ────────────────────────────────────────────
+# ─── detect install target ───────────────────────────────────────────────────
 detect_install_target() {
-  # Сначала пробуем Claude Code (CLI)
+  # Try Claude Code (CLI) first
   if command -v claude &>/dev/null; then
     echo "claude-code"
     return
   fi
-  # Затем Cowork desktop
+  # Then Cowork desktop
   if [ -d "$HOME/Library/Application Support/Claude" ]; then
     echo "cowork"
     return
@@ -59,7 +59,7 @@ install_plugin() {
   local src="$PLUGINS_DIR/$plugin_name"
 
   if [ ! -d "$src" ]; then
-    log_error "Плагин '$plugin_name' не найден в $PLUGINS_DIR"
+    log_error "Plugin '$plugin_name' not found in $PLUGINS_DIR"
     return 1
   fi
 
@@ -82,8 +82,8 @@ install_plugin() {
       log_success "[$plugin_name] → $dst (Cowork)"
       ;;
     *)
-      log_warn "Не удалось определить тип установки."
-      log_warn "Установи вручную: скопируй папку '$plugin_name' в:"
+      log_warn "Could not detect install target."
+      log_warn "Install manually — copy '$plugin_name' folder to:"
       log_warn "  Claude Code:  ~/.claude/plugins/"
       log_warn "  Cowork:       ~/Library/Application Support/Claude/plugins/"
       return 1
@@ -98,12 +98,12 @@ uninstall_plugin() {
   for dir in "$CLAUDE_CODE_PLUGINS/$plugin_name" "$COWORK_PLUGINS/$plugin_name"; do
     if [ -d "$dir" ]; then
       rm -rf "$dir"
-      log_success "Удалён: $dir"
+      log_success "Removed: $dir"
       removed=1
     fi
   done
 
-  [ "$removed" -eq 0 ] && log_warn "$plugin_name не найден, пропускаем"
+  [ "$removed" -eq 0 ] && log_warn "$plugin_name not found, skipping"
 }
 
 # ─── entrypoint ───────────────────────────────────────────────────────────────
@@ -111,7 +111,7 @@ main() {
   log_header "🔌 my-zodiac-ai/mzai-plugins installer"
 
   if [ "${1:-}" = "--list" ]; then
-    log_header "Доступные плагины:"
+    log_header "Available plugins:"
     for p in $(get_available_plugins); do
       local version
       version=$(python3 -c "import json; print(json.load(open('$PLUGINS_DIR/$p/.claude-plugin/plugin.json')).get('version','?'))" 2>/dev/null || echo "?")
@@ -121,15 +121,15 @@ main() {
   fi
 
   if [ "${1:-}" = "--uninstall" ]; then
-    log_header "Удаляю плагины..."
+    log_header "Removing plugins..."
     for p in $(get_available_plugins); do
       uninstall_plugin "$p"
     done
-    log_success "Готово"
+    log_success "Done"
     return 0
   fi
 
-  # Если аргументы переданы — ставим только их, иначе все
+  # If arguments provided — install only those, otherwise install all
   local to_install
   if [ $# -gt 0 ]; then
     to_install=("$@")
@@ -137,7 +137,7 @@ main() {
     mapfile -t to_install < <(get_available_plugins)
   fi
 
-  log_header "Устанавливаю ${#to_install[@]} плагин(ов)..."
+  log_header "Installing ${#to_install[@]} plugin(s)..."
   local failed=0
   for p in "${to_install[@]}"; do
     install_plugin "$p" || ((failed++))
@@ -145,12 +145,12 @@ main() {
 
   echo ""
   if [ "$failed" -eq 0 ]; then
-    log_success "Все плагины установлены!"
+    log_success "All plugins installed!"
     echo ""
-    echo -e "  ${BOLD}Следующий шаг:${RESET} перезапусти Claude Code или Cowork"
-    echo -e "  чтобы плагины подхватились."
+    echo -e "  ${BOLD}Next step:${RESET} restart Claude Code or Cowork"
+    echo -e "  to pick up the new plugins."
   else
-    log_error "$failed плагин(ов) не удалось установить"
+    log_error "$failed plugin(s) failed to install"
     exit 1
   fi
 }
