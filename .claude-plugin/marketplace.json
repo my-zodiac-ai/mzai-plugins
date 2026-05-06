@@ -1,0 +1,54 @@
+{
+  "name": "my-zodiac-ai",
+  "owner": {
+    "name": "Valentyn Yakovlev",
+    "url": "https://github.com/my-zodiac-ai"
+  },
+  "metadata": {
+    "description": "Custom Claude plugins for My Zodiac AI — NestJS + Vue 3 + Quasar monorepo toolkit",
+    "version": "1.0.0",
+    "repository": "https://github.com/my-zodiac-ai/claude-plugins"
+  },
+  "plugins": [
+    {
+      "name": "zodiac-dev-toolkit",
+      "description": "Complete engineering toolkit for My Zodiac AI — NestJS + Vue 3 + Quasar monorepo with EDA/DDD/FSD patterns",
+      "source": "./plugins/zodiac-dev-toolkit"
+    },
+    {
+      "name": "zodiac-quality-gate",
+      "description": "Code quality orchestrators — SOLID/DRY/YAGNI, security, architecture, performance audits",
+      "source": "./plugins/zodiac-quality-gate"
+    },
+    {
+      "name": "zodiac-research-lab",
+      "description": "Deep feature research — competitors, UX patterns, tech stack, codebase analysis",
+      "source": "./plugins/zodiac-research-lab"
+    },
+    {
+      "name": "zodiac-design-review",
+      "description": "Design review system — Cosmic Glass, accessibility, UX/UI, design system tokens",
+      "source": "./plugins/zodiac-design-review"
+    },
+    {
+      "name": "astrology-data-validator",
+      "description": "Swiss Ephemeris validator — regression testing for ephemeris calculations",
+      "source": "./plugins/astrology-data-validator"
+    },
+    {
+      "name": "speckit",
+      "description": "Full feature lifecycle — specify → plan → implement → verify",
+      "source": "./plugins/speckit"
+    },
+    {
+      "name": "speckit-product-forge",
+      "description": "Product Forge v1.5.0 — full product lifecycle for My Zodiac AI stack",
+      "source": "./plugins/speckit-product-forge"
+    },
+    {
+      "name": "cowork-plugin-management",
+      "description": "Create and customize plugins for your organization",
+      "source": "./plugins/cowork-plugin-management"
+    }
+  ]
+}
