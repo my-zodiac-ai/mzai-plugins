@@ -43,12 +43,12 @@ Comprehensive code quality orchestrators for My Zodiac AI. Runs multi-dimensiona
 | `performance-auditor` | yellow | sonnet | Read, Grep, Glob | Finds N+1, memory leaks, bottlenecks |
 | `dependency-auditor` | green | sonnet | Read, Grep, Glob, Bash | Audits packages, licenses, CVEs |
 | `refactor-auditor` | magenta | sonnet | Read, Grep, Glob | Identifies dead code, simplification targets |
-| `testing-auditor` | green | sonnet | Read, Grep, Glob, Bash | Evaluates coverage, quality, flakiness |
+| `testing-auditor` | orange | sonnet | Read, Grep, Glob, Bash | Evaluates coverage, quality, flakiness |
 
 ## How It Works
 
-1. **Skills** define *what to check* and *when to trigger* — they contain the audit methodology
-2. **Agents** are *who executes* — specialized subagents with dedicated system prompts
+1. **Skills** are the single source of truth — they contain the full audit methodology, checklist, and report format
+2. **Agents** are thin dispatchers — each one reads its paired skill (`SKILL.md`) and applies it, so the two never drift; they exist to run in parallel with isolated context
 3. The **mega-orchestrator** (`full-quality-gate` skill) coordinates everything:
    - Detects scope (PR diff / module / full project)
    - Launches all 7 agents in parallel
@@ -67,9 +67,9 @@ Comprehensive code quality orchestrators for My Zodiac AI. Runs multi-dimensiona
 
 ## Project-Specific Rules
 
-When running inside My Zodiac AI, agents load `references/zodiac-rules.md` with EDA/DDD/FSD patterns, bounded context boundaries, anti-patterns, and naming conventions.
+When running inside My Zodiac AI, the `full-quality-gate` orchestrator loads the project overlay at `skills/full-quality-gate/references/zodiac-rules.md` (EDA/DDD/FSD patterns, bounded-context boundaries, anti-patterns, naming conventions).
 
-For other projects, universal best practices apply (SOLID, OWASP, clean code, etc.).
+For other projects, apply the universal Engineering Canon (SOLID, OWASP, clean code, C4 + ADR discipline) and supply your own overlay file if you have project-specific rules.
 
 ## Author
 

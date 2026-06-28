@@ -58,21 +58,20 @@ If these files don't exist, fall back to universal best practices and note the a
 
 ### 4. Dependency Rules
 
-Check the dependency graph between bounded contexts:
+Universal rules (Engineering Canon §2 — dependency-inversion + the Acyclic Dependencies Principle):
+- No circular dependencies between modules / bounded contexts.
+- Dependencies point toward stable abstractions; infrastructure depends on nothing app-specific.
+- Cross-module communication via events or adapter interfaces — not direct service injection.
+
+The concrete allowed/forbidden edges are **project-specific**. Load them from the project overlay
+(`references/zodiac-rules.md`) or the repo's ADRs; don't assume them. Example (My Zodiac AI):
 
 ```
-infrastructure ← (all other modules)
-shared ← (all modules)
+infrastructure ← (all other modules);  shared ← (all modules)
 core ← astrology, ai, business, notifications-v2
-astrology → business (allowed, partially)
-ai → astrology (allowed, for context)
+astrology → business (partial);  ai → astrology (allowed)
+FORBIDDEN: infrastructure → business;  astrology → ai;  forwardRef() (ADR-002)
 ```
-
-**Forbidden:**
-- `infrastructure` depending on business modules
-- `astrology` depending on `ai` (one-directional)
-- Circular dependencies between bounded contexts
-- `forwardRef()` usage (ADR-002: fully eliminated)
 
 ### 5. Adapter Pattern Usage
 
@@ -84,14 +83,11 @@ Verify that cross-module communication uses adapters:
 
 ### 6. ADR Conformance
 
-Check against all active ADRs (read from `docs/AI_ARCHITECTURE.md`):
-- ADR-001: EDA for side effects
-- ADR-002: No forwardRef (CI should block)
-- ADR-003: Notifications V2 system
-- ADR-004: FSD mandatory for frontend
-- ADR-005: Vitest only (no Jest)
-- ADR-006: Multi-provider AI with ai-manager
-- ADR-007: ENABLED_ASTROLOGY_SYSTEMS env var
+ADRs are **project-specific** by definition — read the repo's active ADRs from its own docs
+(e.g. `docs/adr/`, `docs/AI_ARCHITECTURE.md`) or the project overlay. Do not assume a fixed list.
+Example set (My Zodiac AI): ADR-001 EDA for side effects · ADR-002 no `forwardRef` · ADR-003
+Notifications V2 · ADR-004 FSD mandatory · ADR-005 Vitest only · ADR-006 multi-provider AI ·
+ADR-007 `ENABLED_ASTROLOGY_SYSTEMS` env var.
 
 ## Output Format
 
