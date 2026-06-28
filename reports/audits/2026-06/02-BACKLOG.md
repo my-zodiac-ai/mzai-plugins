@@ -21,7 +21,14 @@
 - ✅ **De-domain core** — `caching-patterns` (новый), `testing-patterns`, `api-changelog`, `docker-compose-ops`, `load-testing` переписаны как стек-агностичные; проектные примеры — под `## Example`. CI-7 по `core-*` чист (0 предупреждений).
 - ✅ **B-09** — README/marketplace/версии приведены в порядок; счётчики совпадают (CI-4 зелёный).
 
-**Остаётся (некритично, 17 warnings линтера):** `allowed-tools` на скиллах, которые шеллатся (~15 шт); `keywords` у vendored `cowork-plugin-management`. Не валят билд.
+**Wave 2 (дедуп + расширение):**
+- ✅ **B-12** — 12 зеркальных агентов (quality-gate + design-review) → тонкие shim'ы (Glob+Read парный скилл = единый источник правды); уникальные цвета.
+- ✅ **B-14** — `architecture-audit` расцеплён от проектных ADR/dep-graph (универсальное → Engineering Canon; проектное → overlay/пример); README quality-gate выправлен.
+- ✅ **B-18** — новые `adapter-nuxt` (4 скилла) и `adapter-prisma` (3 скилла) для companion-ai / astro-ai-landing. Теперь **14 плагинов**.
+- ✅ **B-13** — `zodiac-research-lab` помечен `domain:astrology` + условный deferral к хостовым скиллам (без жёсткой зависимости).
+- ✅ **Polish** — `allowed-tools` на 14 скиллах (+2 MCP-скилла исключены в линтере), top-level **LICENSE** (MIT + ссылка на Apache cowork). **Линтер: 0 ошибок, 0 warnings.**
+
+**Остаётся (опционально / в других репо):** B-15 (реальный `constitution.md` на проект — в продуктовых репо), B-16 (вынести `astrology-data-validator` в продуктовый репо + провенанс данных из JPL Horizons), B-17 (решить vendoring `cowork-plugin-management`), точечный scoping `Bash(<cmd>:*)` в `allowed-tools` (сейчас задекларирован общий набор), B-14-full (остальные quality-gate скиллы). Push в origin — за вами.
 
 ---
 
