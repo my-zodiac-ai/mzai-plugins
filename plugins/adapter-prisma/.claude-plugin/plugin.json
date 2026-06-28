@@ -1,0 +1,7 @@
+{
+  "name": "adapter-prisma",
+  "version": "0.1.0",
+  "description": "Prisma adapter — schema modeling & relations, safe (zero-downtime) migrations, and client query patterns (transactions, N+1 avoidance, pagination, connection management). Use when modeling data, writing migrations, or reviewing Prisma usage (e.g. companion-ai on PostgreSQL). For Mongoose/MongoDB, use adapter-nestjs/mongodb-ops instead.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["prisma", "adapter", "postgres", "mysql", "orm", "migrations", "schema", "transactions"]
+}

@@ -12,6 +12,8 @@ Claude plugins and skills for Claude Code and Cowork — a **universal-core + th
 | **Stack adapters** | | _map the core onto one stack_ |
 | [`adapter-nestjs`](#adapter-nestjs) | 6 | NestJS: EDA/DDD, REST/DTO, Mongoose, Redis+BullMQ caching, push, fault-tolerance |
 | [`adapter-vue-quasar`](#adapter-vue-quasar) | 5 | Vue 3 + Quasar + Capacitor: frontend patterns, mobile builds, bundle, Lighthouse |
+| [`adapter-nuxt`](#adapter-nuxt) | 4 | Nuxt 3/4: data fetching, server routes, Nitro caching, state |
+| [`adapter-prisma`](#adapter-prisma) | 3 | Prisma: schema modeling, safe migrations, client query patterns |
 | [`observability`](#observability) | 2 | NewRelic dashboards/NRQL/SLO + RUM (Core Web Vitals) |
 | **Hooks & process** | | |
 | [`zodiac-hooks-pack`](#zodiac-hooks-pack) | — | 8 hooks: sensitive-file block, ESLint, tsc, Prisma, GSAP, frontmatter, Serena, i18n |
@@ -105,6 +107,18 @@ Skills: `nestjs-backend-patterns`, `api-design`, `mongodb-ops`, `notifications-p
 **Vue 3 + Quasar + Capacitor adapter** — frontend patterns (Composition API, Pinia, FSD), mobile builds/signing, Vite bundle analysis, Lighthouse audits, deploy. Includes agent `vue-reviewer`. (For Nuxt, add a Nuxt adapter instead.)
 
 Skills: `vue-frontend-patterns`, `capacitor-mobile-ops`, `bundle-analyzer`, `lighthouse-audit`, `devops-deploy`
+
+### `adapter-nuxt`
+
+**Nuxt 3/4 adapter** — maps `core-engineering` onto Nuxt: data fetching (useFetch/useAsyncData/$fetch), server routes + Nitro middleware, Nitro caching (routeRules/cachedFunction), and state (useState/Pinia). For companion-ai / astro-ai-landing. (For Vue 3 + Quasar SPA, use `adapter-vue-quasar`.)
+
+Skills: `nuxt-data-fetching`, `nuxt-server-routes`, `nuxt-caching`, `nuxt-state`
+
+### `adapter-prisma`
+
+**Prisma adapter** — schema modeling & relations, safe (expand→contract) zero-downtime migrations, and client query patterns (transactions, N+1 avoidance, pagination). For PostgreSQL/MySQL projects. (For Mongoose/MongoDB, use `adapter-nestjs`'s `mongodb-ops`.)
+
+Skills: `prisma-schema-patterns`, `prisma-migrations`, `prisma-client-patterns`
 
 ### `observability`
 

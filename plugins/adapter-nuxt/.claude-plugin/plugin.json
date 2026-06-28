@@ -1,0 +1,7 @@
+{
+  "name": "adapter-nuxt",
+  "version": "0.1.0",
+  "description": "Nuxt 3/4 adapter — maps the core-engineering patterns onto Nuxt: data fetching (useFetch/useAsyncData/$fetch), server routes & Nitro middleware, Nitro caching (routeRules/cachedFunction), and state (useState/Pinia). Use when building or reviewing a Nuxt app (e.g. companion-ai, astro-ai-landing). For Vue 3 + Quasar SPA, use adapter-vue-quasar instead.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["nuxt", "nuxt3", "nuxt4", "nitro", "adapter", "ssr", "useFetch", "server-routes", "pinia"]
+}

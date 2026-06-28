@@ -31,6 +31,16 @@
       "source": "./plugins/adapter-vue-quasar"
     },
     {
+      "name": "adapter-nuxt",
+      "description": "Nuxt 3/4 adapter — data fetching (useFetch/$fetch), server routes & Nitro middleware, Nitro caching, state (useState/Pinia).",
+      "source": "./plugins/adapter-nuxt"
+    },
+    {
+      "name": "adapter-prisma",
+      "description": "Prisma adapter — schema modeling, safe zero-downtime migrations, and client query patterns (transactions, N+1 avoidance, pagination).",
+      "source": "./plugins/adapter-prisma"
+    },
+    {
       "name": "observability",
       "description": "Observability adapter — NewRelic dashboards/NRQL/SLO and Real User Monitoring (Core Web Vitals). Config-driven account/app IDs.",
       "source": "./plugins/observability"
