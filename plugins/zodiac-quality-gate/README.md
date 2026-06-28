@@ -69,7 +69,7 @@ Comprehensive code quality orchestrators for My Zodiac AI. Runs multi-dimensiona
 
 When running inside My Zodiac AI, the `full-quality-gate` orchestrator loads the project overlay at `skills/full-quality-gate/references/zodiac-rules.md` (EDA/DDD/FSD patterns, bounded-context boundaries, anti-patterns, naming conventions).
 
-For other projects, apply the universal Engineering Canon (SOLID, OWASP, clean code, C4 + ADR discipline) and supply your own overlay file if you have project-specific rules.
+For other projects, apply universal best practices (SOLID, OWASP, clean code, C4 + ADR discipline) and supply your own overlay file if you have project-specific rules.
 
 ## Author
 

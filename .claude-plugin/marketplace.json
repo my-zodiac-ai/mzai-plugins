@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Claude plugins for the my-zodiac-ai org — universal-core engineering skills + thin stack adapters, hooks, quality/research/design, and product domain.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "repository": "https://github.com/my-zodiac-ai/mzai-plugins"
   },
   "plugins": [

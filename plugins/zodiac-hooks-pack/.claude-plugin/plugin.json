@@ -1,6 +1,6 @@
 {
   "name": "zodiac-hooks-pack",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reusable Claude Code hooks for the My Zodiac AI ecosystem (my_zodiac_ai, companion-ai, astro-ai-landing). Self-detecting, fail-soft, individually disable-able. Covers sensitive-file blocking, ESLint --fix, TypeScript checks, Prisma migration reminders, GSAP import guards, @nuxt/content frontmatter validation, Serena session reminders, and i18n hardcoded-string warnings.",
   "author": {
     "name": "Valentyn Yakovliev"

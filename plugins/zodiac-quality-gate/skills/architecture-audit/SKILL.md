@@ -58,7 +58,7 @@ If these files don't exist, fall back to universal best practices and note the a
 
 ### 4. Dependency Rules
 
-Universal rules (Engineering Canon §2 — dependency-inversion + the Acyclic Dependencies Principle):
+Universal rules (dependency-inversion + the Acyclic Dependencies Principle):
 - No circular dependencies between modules / bounded contexts.
 - Dependencies point toward stable abstractions; infrastructure depends on nothing app-specific.
 - Cross-module communication via events or adapter interfaces — not direct service injection.

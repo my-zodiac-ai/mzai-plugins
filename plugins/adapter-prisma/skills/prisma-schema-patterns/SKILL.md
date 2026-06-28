@@ -12,7 +12,7 @@ x-stack: prisma
 
 ## Rules
 1. **Relations**: define both sides; name the FK field explicitly; pick `onDelete` (`Cascade`/`Restrict`/`SetNull`) deliberately.
-2. **Index hot query paths** (`@@index`) and enforce business uniqueness (`@unique` / `@@unique`). Every field you filter/sort by in a hot path should be indexed (see Engineering Canon §6).
+2. **Index hot query paths** (`@@index`) and enforce business uniqueness (`@unique` / `@@unique`). Every field you filter/sort by in a hot path should be indexed.
 3. **Timestamps**: `createdAt DateTime @default(now())`, `updatedAt DateTime @updatedAt`.
 4. **Enums** over free strings for fixed sets.
 5. **Soft delete**: `deletedAt DateTime?` + always filter `where: { deletedAt: null }` (or a Client Extension) — don't rely on it for hard constraints.

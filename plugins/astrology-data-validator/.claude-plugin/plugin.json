@@ -1,6 +1,6 @@
 {
   "name": "astrology-data-validator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Validates Swiss Ephemeris calculations, aspects, houses, and orbs in My Zodiac AI. Supports regression testing after Swiss Ephemeris updates and cross-engine comparison.",
   "author": {
     "name": "Valentyn Yakovliev"

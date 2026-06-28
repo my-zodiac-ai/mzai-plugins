@@ -11,7 +11,7 @@ x-stack: prisma
 
 # Prisma Client Patterns (adapter)
 
-Implements the performance rules from Engineering Canon §6 (avoid N+1, paginate, index hot paths)
+Implements universal performance rules (avoid N+1, paginate, index hot paths)
 on Prisma.
 
 ## Rules

@@ -1,6 +1,6 @@
 {
   "name": "zodiac-quality-gate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Comprehensive code quality orchestrators for My Zodiac AI. Includes specialized auditors for code quality (SOLID/DRY/YAGNI), security, architecture compliance (EDA/DDD/FSD), performance, dependencies, refactoring, and a mega-orchestrator that runs all checks in parallel.",
   "author": {
     "name": "Valentyn Yakovliev"
