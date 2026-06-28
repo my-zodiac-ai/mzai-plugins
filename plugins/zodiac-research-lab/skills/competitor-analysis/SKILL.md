@@ -5,9 +5,13 @@ description: >
   Use when the user asks "анализ конкурентов", "competitor analysis", "кто это уже делает",
   "как у конкурентов", "what do competitors do", or wants to understand the competitive
   landscape for a specific feature.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # Competitor Analysis
+
+> **Domain plugin (astrology research).** If your environment provides a general `competitor-analysis` / `competitive-brief` skill, use it for the generic method; this skill adds the astrology-app specifics (domain competitors, domain UX, monetization angles).
 
 Perform a thorough competitive analysis for the requested feature in the context of
 astrology, horoscope, and wellness apps.

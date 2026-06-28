@@ -5,9 +5,13 @@ description: >
   Use when the user asks "где в коде", "codebase analysis", "точка интеграции",
   "куда добавить", "how to integrate", "what exists already",
   or needs to understand how a feature fits into the existing architecture.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # Codebase Integration Analysis
+
+> **Domain plugin (astrology research).** If your environment provides a general `codebase-analysis` skill, use it for the generic method; this skill adds the astrology-app specifics (domain competitors, domain UX, monetization angles).
 
 Analyze the My Zodiac AI codebase to determine exactly where and how a new feature
 should be integrated.

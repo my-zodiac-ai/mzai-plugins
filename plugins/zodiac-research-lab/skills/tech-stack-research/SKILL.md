@@ -5,9 +5,13 @@ description: >
   Use when the user asks "какие библиотеки для", "tech stack research",
   "best libraries for", "npm packages for", "API для", "технические возможности",
   or needs to evaluate technical options for a feature implementation.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # Tech Stack Research
+
+> **Domain plugin (astrology research).** If your environment provides a general `tech-stack-research` skill, use it for the generic method; this skill adds the astrology-app specifics (domain competitors, domain UX, monetization angles).
 
 Research and recommend the best libraries, APIs, and technical tools for implementing
 the requested feature in the My Zodiac AI stack (NestJS 11 + Vue 3 + Quasar + TypeScript 5.9).

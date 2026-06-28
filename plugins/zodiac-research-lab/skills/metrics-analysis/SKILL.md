@@ -5,9 +5,13 @@ description: >
   Use when the user asks "метрики фичи", "impact analysis", "какой будет эффект",
   "стоит ли делать", "ROI of feature", "monetization potential",
   or needs data-driven insights to decide on a feature.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # Metrics & Impact Analysis
+
+> **Domain plugin (astrology research).** If your environment provides a general `metrics-analysis` / `metrics-review` skill, use it for the generic method; this skill adds the astrology-app specifics (domain competitors, domain UX, monetization angles).
 
 Analyze available metrics and estimate business impact of implementing a feature
 in My Zodiac AI.
@@ -27,10 +31,10 @@ Use PostHog MCP tools to query:
 - Events related to the feature area (if any similar feature exists)
 
 Useful PostHog queries:
-- `insight-query` for trends and funnels
-- `cohorts-list` for user segments
-- `event-definitions-list` for available events
-- `properties-list` for user properties
+- insight/trend queries for trends and funnels
+- cohort listing for user segments
+- event-definition listing for available events
+- property listing for user properties
 
 **From MongoDB (if MCP available):**
 Use MongoDB MCP tools to understand:

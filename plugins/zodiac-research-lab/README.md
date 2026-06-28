@@ -2,6 +2,8 @@
 
 Deep feature research plugin for My Zodiac AI. Performs comprehensive multi-dimensional analysis of new feature ideas — from competitor landscape to codebase integration.
 
+> **Scope: `domain:astrology`.** These skills are astrology-product research — they overlap with general research skills on method but add domain specifics (astrology competitors, domain UX, monetization). If your environment ships a general research skill (e.g. `deep-research`, `competitor-analysis`, `metrics-review`), use it for the generic method; reach for these for the astrology angle. They don't hard-depend on host skills, so they also work standalone.
+
 ## What It Does
 
 Give it a feature idea like "добавить нумерологию" and it produces a complete research report covering:

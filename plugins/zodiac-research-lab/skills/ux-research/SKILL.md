@@ -5,9 +5,13 @@ description: >
   Use when the user asks "лучший UI для", "UX паттерны", "UI research",
   "как лучше сделать интерфейс", "best UX for", "дизайн фичи",
   or needs guidance on how to design a feature's user interface.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # UI/UX Research
+
+> **Domain plugin (astrology research).** If your environment provides a general `ux-research` / design `user-research` skill, use it for the generic method; this skill adds the astrology-app specifics (domain competitors, domain UX, monetization angles).
 
 Research and recommend the best UI/UX approach for the requested feature,
 specifically for a mobile-first astrology app built with Vue 3 + Quasar + Capacitor.

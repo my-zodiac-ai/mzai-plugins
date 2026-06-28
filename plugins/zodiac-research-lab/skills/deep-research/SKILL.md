@@ -6,6 +6,8 @@ description: >
   "нужно добавить [feature]", "мега-анализ", "полный ресерч", or describes a new feature idea
   that needs thorough analysis before implementation. This is the main entry point that
   coordinates all research dimensions.
+x-scope: domain:astrology
+x-stack: any
 ---
 
 # Deep Feature Research — Orchestrator
