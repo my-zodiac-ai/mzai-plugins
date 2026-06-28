@@ -116,7 +116,9 @@ for pd in plugin_dirs:
         nlines = md.count("\n") + 1
         if nlines > 500:
             warn("CI-5", f"{rel(skill)} body {nlines} lines > 500 (split into references/)")
-        if SHELL_HINT.search(md) and (fm is None or "allowed-tools" not in fm):
+        # MCP-dependent skills are exempt: restricting their tools would block the
+        # MCP tools they rely on (and MCP tool names are instance-specific).
+        if SHELL_HINT.search(md) and "mcp__" not in md and (fm is None or "allowed-tools" not in fm):
             warn("CI-5", f"{rel(skill)} shells out but declares no 'allowed-tools'")
         # CI-1 broken refs inside the skill dir
         for tok in set(REF_TOKEN.findall(md)):

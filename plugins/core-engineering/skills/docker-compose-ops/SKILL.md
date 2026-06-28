@@ -11,6 +11,7 @@ description: >
   or run e2e tests from compose, this is the right skill.
 x-scope: core
 x-stack: any
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Docker Compose Operations

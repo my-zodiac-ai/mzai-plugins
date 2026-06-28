@@ -11,6 +11,7 @@ description: >
   even if the user doesn't explicitly say "bundle".
 x-scope: adapter:vue-quasar
 x-stack: vue-quasar
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Bundle Analyzer

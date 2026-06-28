@@ -13,6 +13,7 @@ description: >
   Gradle errors, Xcode signing problems — even without "Capacitor" keyword.
 x-scope: adapter:vue-quasar
 x-stack: vue-quasar
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Capacitor Mobile Ops — My Zodiac AI

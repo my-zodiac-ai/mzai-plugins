@@ -7,6 +7,7 @@ description: >
   "найди уязвимости", "CVE check", "secrets scan", "OWASP review", or before deploying
   to production. Also trigger proactively when code touches auth, payments, user input,
   or API endpoints.
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Security Audit

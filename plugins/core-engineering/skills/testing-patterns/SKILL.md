@@ -9,6 +9,7 @@ description: >
   backend or frontend.
 x-scope: core
 x-stack: any
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # TDD & Testing Patterns

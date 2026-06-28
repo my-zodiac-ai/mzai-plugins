@@ -5,6 +5,7 @@ description: >
   Use when users want to create a plugin, build a plugin, make a new plugin, develop a plugin, scaffold a plugin, start a plugin from scratch, or design a plugin.
   This skill requires Cowork mode with access to the outputs directory for delivering the final .plugin file.
 compatibility: Requires Cowork desktop app environment with access to the outputs directory for delivering .plugin files.
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Create Cowork Plugin

@@ -11,6 +11,7 @@ metadata:
   version: "0.1.0"
   domain: astrology
   module: back/src/modules/astrology
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Astrology Data Validator

@@ -11,6 +11,7 @@ description: >
   fallbacks", "how resilient is [service]" — even without saying "chaos engineering".
 x-scope: adapter:nestjs
 x-stack: nestjs
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Chaos Engineering Skill

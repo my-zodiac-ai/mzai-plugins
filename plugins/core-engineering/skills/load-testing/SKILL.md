@@ -12,6 +12,7 @@ description: >
   or mentions of k6/results/ — even without saying "k6".
 x-scope: core
 x-stack: any
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # k6 Load Testing

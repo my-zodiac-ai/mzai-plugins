@@ -11,6 +11,7 @@ description: >
   "check lighthouse scores", or references lighthouserc / LHCI in any way.
 x-scope: adapter:vue-quasar
 x-stack: vue-quasar
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Lighthouse Audit Skill

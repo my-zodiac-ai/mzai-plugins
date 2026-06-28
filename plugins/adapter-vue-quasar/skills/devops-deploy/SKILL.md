@@ -8,6 +8,7 @@ description: >
   infrastructure configuration.
 x-scope: adapter:vue-quasar
 x-stack: vue-quasar
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # DevOps & Deploy — My Zodiac AI

@@ -13,6 +13,7 @@ description: >
   "DTO changes", "schema changes", or "migration notes for API consumers".
 x-scope: core
 x-stack: any
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # API Changelog Generator
