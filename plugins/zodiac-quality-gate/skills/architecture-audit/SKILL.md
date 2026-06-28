@@ -63,8 +63,9 @@ Universal rules (Engineering Canon §2 — dependency-inversion + the Acyclic De
 - Dependencies point toward stable abstractions; infrastructure depends on nothing app-specific.
 - Cross-module communication via events or adapter interfaces — not direct service injection.
 
-The concrete allowed/forbidden edges are **project-specific**. Load them from the project overlay
-(`references/zodiac-rules.md`) or the repo's ADRs; don't assume them. Example (My Zodiac AI):
+The concrete allowed/forbidden edges are **project-specific**. Load them from the project's overlay
+file or its ADR docs; don't assume them. (In this marketplace, the `full-quality-gate` orchestrator
+supplies the My Zodiac AI overlay.) Example:
 
 ```
 infrastructure ← (all other modules);  shared ← (all modules)
