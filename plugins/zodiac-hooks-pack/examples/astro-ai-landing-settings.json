@@ -1,8 +1,8 @@
 {
-  "_comment": "Drop-in replacement for /Users/valentinyakovlev/projects/astro-ai-landing/.claude/settings.json — block-sensitive + frontmatter are now plugin-managed. oxfmt is project-unique (not in plugin) so kept inline.",
+  "_comment": "Drop-in replacement for astro-ai-landing/.claude/settings.json — block-sensitive + frontmatter are now plugin-managed. oxfmt is project-unique (not in plugin) so kept inline.",
   "enabledPlugins": {
     "zodiac-hooks-pack@mzai-plugins": true,
-    "speckit@mzai-plugins": true
+    "_comment_sdd": "speckit installs via SpecKit CLI (github/spec-kit), not as a Claude plugin"
   },
   "hooks": {
     "PostToolUse": [

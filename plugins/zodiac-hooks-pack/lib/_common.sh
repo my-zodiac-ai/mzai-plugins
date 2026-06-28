@@ -15,21 +15,16 @@ zh_globally_disabled() {
 }
 
 # ---------- Stdin parsing ----------
-# Hooks receive a JSON payload on stdin. We cache it in a variable so each
-# helper can re-parse without re-reading (stdin is not seekable).
-_ZH_PAYLOAD=""
-
-zh_read_payload() {
-  if [[ -z "${_ZH_PAYLOAD}" ]]; then
-    _ZH_PAYLOAD="$(cat -)"
-  fi
-  printf '%s' "${_ZH_PAYLOAD}"
-}
+# Hooks receive a JSON payload on stdin. Stdin is NOT seekable and cannot be
+# re-read, so each hook MUST read it EXACTLY ONCE at the top
+# (payload="$(zh_read_payload)") and pass that string to the extractors below
+# as their first argument. Never call the extractors through nested command
+# substitution that would re-read stdin — the previous caching approach failed
+# because the cache was assigned inside a $(...) subshell and lost on return.
+zh_read_payload() { cat -; }
 
 zh_get_file_path() {
-  local payload
-  payload="$(zh_read_payload)"
-  ZH_PAYLOAD="${payload}" python3 -c "
+  ZH_PAYLOAD="${1:-}" python3 -c "
 import os, json, sys
 try:
     d = json.loads(os.environ.get('ZH_PAYLOAD', '') or '{}')
@@ -43,9 +38,7 @@ except Exception:
 zh_get_content() {
   # For Edit: prefer new_string. For Write: prefer content.
   # For MultiEdit: concatenate all new_string values.
-  local payload
-  payload="$(zh_read_payload)"
-  ZH_PAYLOAD="${payload}" python3 -c "
+  ZH_PAYLOAD="${1:-}" python3 -c "
 import os, json, sys
 try:
     d = json.loads(os.environ.get('ZH_PAYLOAD', '') or '{}')
@@ -66,9 +59,7 @@ except Exception:
 }
 
 zh_get_tool_name() {
-  local payload
-  payload="$(zh_read_payload)"
-  ZH_PAYLOAD="${payload}" python3 -c "
+  ZH_PAYLOAD="${1:-}" python3 -c "
 import os, json
 try:
     d = json.loads(os.environ.get('ZH_PAYLOAD', '') or '{}')

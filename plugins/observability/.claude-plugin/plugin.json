@@ -1,0 +1,7 @@
+{
+  "name": "observability",
+  "version": "0.1.0",
+  "description": "Observability adapter — NewRelic dashboards/NRQL/SLO authoring and Real User Monitoring (Core Web Vitals) analysis. Account IDs, app IDs and MCP tools are read from config placeholders, not hardcoded. Use to build monitoring artifacts or analyze field performance.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["observability", "newrelic", "nrql", "slo", "rum", "core-web-vitals", "monitoring", "adapter"]
+}

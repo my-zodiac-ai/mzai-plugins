@@ -1,0 +1,7 @@
+{
+  "name": "ai-llm",
+  "version": "0.1.0",
+  "description": "LLM orchestration patterns — multi-provider fallback, semantic caching, cost optimization, prompt construction, streaming, tool use, and prompt caching. Provider-agnostic patterns with provider-specific notes. Use when integrating or optimizing LLM features.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["ai", "llm", "provider-fallback", "streaming", "prompt-caching", "cost-optimization", "tool-use"]
+}

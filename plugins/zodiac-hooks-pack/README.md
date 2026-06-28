@@ -91,8 +91,10 @@ Default required keys: `title,description,date`.
 
 - All scripts use `set -u` (unset var = error) but **not** `set -e` —
   hooks must never abort midway.
-- All variables are quoted; file paths are validated as absolute.
-- No script interprets file content as code.
+- All variables are quoted. The stdin JSON payload is read exactly once per hook
+  and parsed via `python3` (passed through an env var, never interpolated into
+  the shell), so a malicious `file_path`/content value cannot inject commands.
+- No script interprets file content or file names as code.
 - `tsc-after-edit.sh` throttles per-workspace to avoid blocking on every edit.
 - `eslint-on-save.sh` and `tsc-after-edit.sh` use `timeout` to prevent hangs.
 - `block-sensitive-files.sh` is the only hook that can abort (exit 2);

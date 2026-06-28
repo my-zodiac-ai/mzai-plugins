@@ -1,0 +1,7 @@
+{
+  "name": "adapter-nestjs",
+  "version": "0.1.0",
+  "description": "NestJS adapter — maps the core-engineering patterns onto NestJS: EDA/DDD module structure, REST API & DTO design, Mongoose data ops, cache-manager/Redis + BullMQ caching, push notifications, and fault-tolerance/chaos patterns. Use when implementing or reviewing a NestJS backend.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["nestjs", "adapter", "backend", "eda", "ddd", "mongoose", "bullmq", "rest", "dto"]
+}

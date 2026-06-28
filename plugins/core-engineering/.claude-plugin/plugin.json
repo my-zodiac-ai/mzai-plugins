@@ -1,0 +1,7 @@
+{
+  "name": "core-engineering",
+  "version": "0.1.0",
+  "description": "Universal, stack-agnostic engineering skills — caching patterns, testing patterns, load testing, API changelogs, docker-compose ops, Playwright automation, and Langfuse LLM observability. No framework or domain coupling; works in any JS/TS repo. Apply directly, or pair with a stack adapter (adapter-nestjs, adapter-vue-quasar).",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["core", "universal", "caching", "testing", "load-testing", "playwright", "docker-compose", "api-changelog", "langfuse", "portable"]
+}

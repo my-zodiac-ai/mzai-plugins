@@ -1,0 +1,7 @@
+{
+  "name": "domain-astrology",
+  "version": "0.1.0",
+  "description": "Astrology product domain — Swiss Ephemeris calculations (natal charts, transits, synastry, houses, aspects, cosmic weather) and product payment/subscription tiers (DodoPayments, Apple IAP, Google Billing). Domain-specific by design; not for non-astrology projects.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["astrology", "domain", "swiss-ephemeris", "natal-chart", "transit", "synastry", "payments", "subscriptions"]
+}

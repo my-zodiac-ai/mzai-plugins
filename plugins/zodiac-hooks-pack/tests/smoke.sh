@@ -25,6 +25,19 @@ assert_exit() {
   fi
 }
 
+# Asserts the hook produced a non-empty warning (stdout+stderr). Guards against
+# the stdin-in-subshell regression where content-reading hooks silently no-op.
+assert_warns() {
+  local desc="$1" out="$2"
+  if [[ -n "${out}" ]]; then
+    printf '  ✓ %s (warned)\n' "${desc}"
+    PASS=$((PASS+1))
+  else
+    printf '  ✗ %s (expected a warning, got none)\n' "${desc}"
+    FAIL=$((FAIL+1))
+  fi
+}
+
 run_hook() {
   local hook="$1" payload="$2"
   printf '%s' "${payload}" | bash "${HOOKS}/${hook}" >/dev/null 2>&1
@@ -114,6 +127,31 @@ assert_exit "opt-in: silent without flag" 0 \
   "$(run_hook i18n-key-checker.sh '{"tool_input":{"file_path":"/front/src/foo.vue","new_string":"<template><p>Hello World</p></template>"}}')"
 assert_exit "no-op on .ts even with flag" 0 \
   "$(printf '%s' '{"tool_input":{"file_path":"/foo.ts"}}' | ZODIAC_HOOK_I18N_ENABLE=1 bash "${HOOKS}/i18n-key-checker.sh" >/dev/null 2>&1; echo $?)"
+
+echo
+echo "── POSITIVE detection (regression guard for the stdin-in-subshell bug) ──"
+
+# gsap: a raw gsap import in front/src/ with gsap in package.json MUST warn.
+_gtmp="$(mktemp -d)"
+mkdir -p "${_gtmp}/front/src"
+printf '%s' '{"dependencies":{"gsap":"^3.12.0"}}' > "${_gtmp}/package.json"
+_gpayload="$(python3 -c "import json,sys; print(json.dumps({'tool_input':{'file_path':sys.argv[1]+'/front/src/anim.ts','new_string':\"import gsap from 'gsap'\"}}))" "${_gtmp}")"
+assert_warns "gsap warns on raw import" \
+  "$(printf '%s' "${_gpayload}" | bash "${HOOKS}/gsap-import-guard.sh" 2>&1)"
+rm -rf "${_gtmp}"
+
+# i18n: a hardcoded UI string in a .vue under front/src/ with vue-i18n + ENABLE flag MUST warn.
+_itmp="$(mktemp -d)"
+mkdir -p "${_itmp}/front/src"
+printf '%s' '{"dependencies":{"vue-i18n":"^9.0.0"}}' > "${_itmp}/package.json"
+_ipayload="$(python3 -c "import json,sys; print(json.dumps({'tool_input':{'file_path':sys.argv[1]+'/front/src/Foo.vue','new_string':'<template><p>Hello World Here</p></template>'}}))" "${_itmp}")"
+assert_warns "i18n warns on hardcoded string" \
+  "$(printf '%s' "${_ipayload}" | ZODIAC_HOOK_I18N_ENABLE=1 bash "${HOOKS}/i18n-key-checker.sh" 2>&1)"
+rm -rf "${_itmp}"
+
+# prisma: editing schema.prisma MUST warn (file-only path; regression guard).
+assert_warns "prisma warns on schema.prisma" \
+  "$(printf '%s' '{"tool_input":{"file_path":"/apps/api/prisma/schema.prisma"}}' | bash "${HOOKS}/prisma-migration-reminder.sh" 2>&1)"
 
 echo
 printf "── Result: %d passed, %d failed ──\n" "${PASS}" "${FAIL}"

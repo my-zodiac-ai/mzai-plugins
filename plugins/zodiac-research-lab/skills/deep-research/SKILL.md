@@ -41,7 +41,7 @@ Provide each agent with:
 - Instruction to use WebSearch for external research
 - Instruction to use PostHog MCP tools for real metrics (if available)
 - Instruction to use MongoDB MCP tools for user data insights (if available)
-- Instruction to analyze the codebase at `/sessions/kind-wonderful-gates/mnt/my_zodiac_ai/`
+- Instruction to analyze the codebase at `the project working directory (repo root)`
 
 ### Step 3: Compile the Report
 

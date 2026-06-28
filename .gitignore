@@ -4,8 +4,8 @@
 **/*.pyc
 **/*.pyo
 
-# Speckit memory — личное состояние, не шарится
-plugins/speckit/memory/
+# Installer backups (created by install.sh before overwrite)
+**/*.bak
 
 # macOS
 .DS_Store

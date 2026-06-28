@@ -1,19 +1,30 @@
 # my-zodiac-ai/mzai-plugins
 
-Custom Claude plugins and skills for Claude Code and Cowork — built for the My Zodiac AI stack.
+Claude plugins and skills for Claude Code and Cowork — a **universal-core + thin stack-adapter** toolkit for the my-zodiac-ai org. Core skills are stack-agnostic (usable in any JS/TS repo); adapters map them onto a concrete stack; domain plugins hold product-specific knowledge.
 
 ## Plugins
 
 | Plugin | Skills | Description |
 |--------|--------|-------------|
-| [`zodiac-dev-toolkit`](#zodiac-dev-toolkit) | 11 | NestJS + Vue 3 + Quasar patterns, EDA/DDD/FSD |
+| **Universal core** | | _stack-agnostic; usable in any JS/TS repo_ |
+| [`core-engineering`](#core-engineering) | 7 | Caching, testing, load-testing, api-changelog, docker-compose, Playwright, Langfuse |
+| [`ai-llm`](#ai-llm) | 2 | LLM orchestration: provider fallback, semantic cache, streaming, tool use |
+| **Stack adapters** | | _map the core onto one stack_ |
+| [`adapter-nestjs`](#adapter-nestjs) | 6 | NestJS: EDA/DDD, REST/DTO, Mongoose, Redis+BullMQ caching, push, fault-tolerance |
+| [`adapter-vue-quasar`](#adapter-vue-quasar) | 5 | Vue 3 + Quasar + Capacitor: frontend patterns, mobile builds, bundle, Lighthouse |
+| [`observability`](#observability) | 2 | NewRelic dashboards/NRQL/SLO + RUM (Core Web Vitals) |
+| **Hooks & process** | | |
+| [`zodiac-hooks-pack`](#zodiac-hooks-pack) | — | 8 hooks: sensitive-file block, ESLint, tsc, Prisma, GSAP, frontmatter, Serena, i18n |
 | [`zodiac-quality-gate`](#zodiac-quality-gate) | 8 | Audits: code quality, security, architecture, performance |
 | [`zodiac-research-lab`](#zodiac-research-lab) | 6 | Deep research: competitors, UX, tech stack, metrics |
-| [`zodiac-design-review`](#zodiac-design-review) | 6 | Design critique, a11y, UX/UI, Cosmic Glass tokens |
+| [`zodiac-design-review`](#zodiac-design-review) | 6 | Design critique, a11y, UX/UI, design-system tokens |
+| **Product domain** | | _astrology-specific by design_ |
+| [`domain-astrology`](#domain-astrology) | 2 | Swiss Ephemeris (natal/transits/synastry) + payment/subscription tiers |
 | [`astrology-data-validator`](#astrology-data-validator) | 1 | Swiss Ephemeris validation, regression testing |
-| [`speckit`](#speckit) | 29 | Feature lifecycle: specify → plan → implement → verify |
-| [`speckit-product-forge`](#speckit-product-forge) | 29 | Product Forge v1.5.0 — full product lifecycle |
+| **Meta** | | |
 | [`cowork-plugin-management`](#cowork-plugin-management) | 2 | Create and customize plugins |
+
+> **SDD tooling (`speckit`, `speckit-product-forge`) is NOT part of this marketplace.** It's installed separately via the SpecKit CLI — see [External SDD tooling](#external-sdd-tooling).
 
 ---
 
@@ -37,7 +48,7 @@ Restart Claude Code or Cowork — plugins will be picked up automatically.
 ### Install specific plugins
 
 ```bash
-./install.sh zodiac-dev-toolkit speckit
+./install.sh core-engineering adapter-nestjs zodiac-quality-gate
 ```
 
 ### List available plugins
@@ -67,11 +78,45 @@ The script replaces old versions with new ones.
 
 ## Plugin descriptions
 
-### `zodiac-dev-toolkit`
+### `zodiac-hooks-pack`
 
-**Complete engineering toolkit for My Zodiac AI** — NestJS + Vue 3 + Quasar monorepo with EDA/DDD/FSD patterns, astrology domain expertise, AI/LLM orchestration, TDD workflows.
+**Reusable Claude Code hooks** — self-detecting, fail-soft, individually disable-able. Covers: sensitive-file blocking (exit 2), ESLint `--fix` on save, `tsc`/`vue-tsc` checks, Prisma migration reminders, GSAP import guard, `@nuxt/content` frontmatter validation, Serena session nudges, and i18n hardcoded-string warnings. Wired via `hooks/hooks.json`; drop-in `examples/` per project.
 
-Skills: `ai-llm-patterns`, `ai-provider-integration`, `api-design`, `astrology-domain`, `devops-deploy`, `nestjs-backend-patterns`, `notifications-push`, `payments-subscriptions`, `redis-caching`, `tdd-testing`, `vue-frontend-patterns`
+### `core-engineering`
+
+**Universal, stack-agnostic engineering skills** — work in any JS/TS repo with zero framework/domain coupling. Pair with a stack adapter for concrete syntax.
+
+Skills: `caching-patterns`, `testing-patterns`, `load-testing`, `api-changelog`, `docker-compose-ops`, `playwright-cli`, `langfuse`
+
+### `ai-llm`
+
+**LLM orchestration patterns** — multi-provider fallback, semantic caching, cost optimization, streaming, tool use, prompt caching. Provider-agnostic with provider-specific notes.
+
+Skills: `ai-llm-patterns`, `ai-provider-integration`
+
+### `adapter-nestjs`
+
+**NestJS adapter** — maps `core-engineering` onto NestJS: EDA/DDD module structure, REST/DTO design, Mongoose data ops, cache-manager/Redis + BullMQ caching, push notifications, fault-tolerance/chaos. Includes agents `nestjs-reviewer`, `build-resolver`.
+
+Skills: `nestjs-backend-patterns`, `api-design`, `mongodb-ops`, `notifications-push`, `chaos-engineering`, `nestjs-caching`
+
+### `adapter-vue-quasar`
+
+**Vue 3 + Quasar + Capacitor adapter** — frontend patterns (Composition API, Pinia, FSD), mobile builds/signing, Vite bundle analysis, Lighthouse audits, deploy. Includes agent `vue-reviewer`. (For Nuxt, add a Nuxt adapter instead.)
+
+Skills: `vue-frontend-patterns`, `capacitor-mobile-ops`, `bundle-analyzer`, `lighthouse-audit`, `devops-deploy`
+
+### `observability`
+
+**Observability adapter** — NewRelic dashboards/NRQL/SLO authoring and Real User Monitoring (Core Web Vitals). Account/app IDs read from config placeholders, never hardcoded.
+
+Skills: `newrelic-dashboard-builder`, `rum-analytics`
+
+### `domain-astrology`
+
+**Astrology product domain** — Swiss Ephemeris (natal charts, transits, synastry, houses, aspects) and product payment/subscription tiers. Domain-specific by design; not for non-astrology projects.
+
+Skills: `astrology-domain`, `payments-subscriptions`
 
 ### `zodiac-quality-gate`
 
@@ -97,17 +142,17 @@ Skills: `comprehensive-review`, `design-critique`, `ux-ui-review`, `accessibilit
 
 Skills: `validate-astrology`
 
-### `speckit`
+### External SDD tooling
 
-**Full feature lifecycle management** — from idea to implementation. Orchestrates: problem discovery, research, product-spec, planning, implementation, verification, testing, security, API docs, retrospectives.
+Spec-Driven Development tooling is **not vendored here** — it's distributed through the SpecKit CLI and installed per project, so it stays in sync with upstream and isn't duplicated in this marketplace.
 
-Skills: `specify`, `clarify`, `plan`, `tasks`, `implement`, `verify`, `review`, `cleanup`, `fleet`, `ralph`, `analyze`, `checklist`, `constitution`, `drift`, `retrospective`, `sync-*`, `v-model-*`
+- **SpecKit** (base SDD flow: constitution → specify → plan → tasks → implement) — [github/spec-kit](https://github.com/github/spec-kit). Install: `uvx --from git+https://github.com/github/spec-kit.git specify init` (see upstream README).
+- **Product Forge** (product lifecycle extension on top of SpecKit) — [VaiYav/speckit-product-forge](https://github.com/VaiYav/speckit-product-forge). Install:
+  ```bash
+  specify extension add product-forge --from https://github.com/VaiYav/speckit-product-forge/archive/refs/heads/main.zip
+  ```
 
-### `speckit-product-forge`
-
-**Product Forge v1.5.0** — full product lifecycle for the My Zodiac AI stack (NestJS 11 + Vue 3.5 + Quasar 2.18 + MongoDB 7 + Redis 7 + Capacitor 8). Three modes: `lite`, `standard`, `v-model`. 29 skills.
-
-Skills: `forge`, `problem-discovery`, `research`, `product-spec`, `plan`, `tasks`, `implement`, `verify-full`, `test-plan`, `test-run`, `code-review`, `release-readiness`, `retrospective`, `tracking-plan`, `monitoring-setup`, `migration-plan`, `i18n-harvest`, `experiment-design`, `feature-flag-cleanup`, `portfolio`, `backfill`, `change-request`, `security-check`, `api-docs`, `bridge`, `pre-impl-review`, `revalidate`, `status`, `sync-verify`
+Both are MIT-licensed. Do not copy their skills into this repo — reference the official sources above.
 
 ### `cowork-plugin-management`
 
@@ -122,17 +167,18 @@ Skills: `create-cowork-plugin`, `cowork-plugin-customizer`
 ```
 mzai-plugins/
 ├── plugins/
-│   ├── zodiac-dev-toolkit/
+│   ├── core-engineering/
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json      # plugin manifest
 │   │   ├── skills/
-│   │   │   ├── nestjs-backend-patterns/
+│   │   │   ├── caching-patterns/
 │   │   │   │   └── SKILL.md
 │   │   │   └── ...
 │   │   └── agents/              # agents (if any)
-│   ├── zodiac-quality-gate/
-│   ├── speckit/
+│   ├── adapter-nestjs/
 │   └── ...
+├── scripts/
+│   └── lint-plugins.py          # CI-1..CI-7 self-validation
 ├── install.sh                   # installer script
 └── README.md
 ```

@@ -1,0 +1,22 @@
+name: lint-plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # CI-1..CI-7 from reports/audits/2026-06/03-UNIVERSAL-STANDARD.md §8.
+      # Fails the build on any ERROR (broken refs, hardcoded paths/IDs, manifest
+      # drift, README count drift, frontmatter problems, hook/script failures).
+      - name: Lint plugins (CI-1..CI-7)
+        run: python3 scripts/lint-plugins.py

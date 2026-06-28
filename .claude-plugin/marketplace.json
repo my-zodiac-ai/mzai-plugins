@@ -5,8 +5,8 @@
     "url": "https://github.com/my-zodiac-ai"
   },
   "metadata": {
-    "description": "Custom Claude plugins for My Zodiac AI — NestJS + Vue 3 + Quasar monorepo toolkit",
-    "version": "1.0.0",
+    "description": "Claude plugins for the my-zodiac-ai org — universal-core engineering skills + thin stack adapters, hooks, quality/research/design, and product domain.",
+    "version": "1.1.0",
     "repository": "https://github.com/my-zodiac-ai/mzai-plugins"
   },
   "plugins": [
@@ -16,9 +16,34 @@
       "source": "./plugins/zodiac-hooks-pack"
     },
     {
-      "name": "zodiac-dev-toolkit",
-      "description": "Complete engineering toolkit for My Zodiac AI — NestJS + Vue 3 + Quasar monorepo with EDA/DDD/FSD patterns",
-      "source": "./plugins/zodiac-dev-toolkit"
+      "name": "core-engineering",
+      "description": "Universal, stack-agnostic engineering skills — caching, testing, load testing, API changelogs, docker-compose ops, Playwright, Langfuse. Works in any JS/TS repo.",
+      "source": "./plugins/core-engineering"
+    },
+    {
+      "name": "adapter-nestjs",
+      "description": "NestJS adapter — maps core-engineering onto NestJS: EDA/DDD modules, REST/DTO design, Mongoose, Redis+BullMQ caching, push, fault-tolerance.",
+      "source": "./plugins/adapter-nestjs"
+    },
+    {
+      "name": "adapter-vue-quasar",
+      "description": "Vue 3 + Quasar + Capacitor adapter — frontend patterns, mobile builds/signing, bundle analysis, Lighthouse, deploy.",
+      "source": "./plugins/adapter-vue-quasar"
+    },
+    {
+      "name": "observability",
+      "description": "Observability adapter — NewRelic dashboards/NRQL/SLO and Real User Monitoring (Core Web Vitals). Config-driven account/app IDs.",
+      "source": "./plugins/observability"
+    },
+    {
+      "name": "ai-llm",
+      "description": "LLM orchestration — multi-provider fallback, semantic caching, cost optimization, streaming, tool use, prompt caching.",
+      "source": "./plugins/ai-llm"
+    },
+    {
+      "name": "domain-astrology",
+      "description": "Astrology product domain — Swiss Ephemeris (natal, transits, synastry, houses) and payment/subscription tiers. Domain-specific by design.",
+      "source": "./plugins/domain-astrology"
     },
     {
       "name": "zodiac-quality-gate",
@@ -39,16 +64,6 @@
       "name": "astrology-data-validator",
       "description": "Swiss Ephemeris validator — regression testing for ephemeris calculations",
       "source": "./plugins/astrology-data-validator"
-    },
-    {
-      "name": "speckit",
-      "description": "Full feature lifecycle — specify → plan → implement → verify",
-      "source": "./plugins/speckit"
-    },
-    {
-      "name": "speckit-product-forge",
-      "description": "Product Forge v1.5.0 — full product lifecycle for My Zodiac AI stack",
-      "source": "./plugins/speckit-product-forge"
     },
     {
       "name": "cowork-plugin-management",

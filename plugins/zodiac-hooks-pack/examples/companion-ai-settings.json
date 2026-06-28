@@ -1,9 +1,8 @@
 {
-  "_comment": "Drop-in replacement for /Users/valentinyakovlev/projects/companion-ai/.claude/settings.json — eslint + Prisma reminder are now plugin-managed. No inline hooks needed.",
+  "_comment": "Drop-in replacement for companion-ai/.claude/settings.json — eslint + Prisma reminder are now plugin-managed. No inline hooks needed.",
   "enabledPlugins": {
     "zodiac-hooks-pack@mzai-plugins": true,
-    "speckit@mzai-plugins": true,
-    "speckit-product-forge@mzai-plugins": true,
+    "_comment_sdd": "speckit + speckit-product-forge install via SpecKit CLI, not as Claude plugins — see repo README 'External SDD tooling'",
     "javascript-typescript@claude-code-workflows": true,
     "backend-development@claude-code-workflows": true,
     "code-review-ai@claude-code-workflows": true

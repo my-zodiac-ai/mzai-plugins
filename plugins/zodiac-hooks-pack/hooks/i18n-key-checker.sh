@@ -16,7 +16,8 @@ zh_globally_disabled && exit 0
 [[ "${ZODIAC_HOOK_I18N_DISABLE:-0}" == "1" ]] && exit 0
 [[ "${ZODIAC_HOOK_I18N_ENABLE:-0}" != "1" ]] && exit 0
 
-file="$(zh_get_file_path)"
+payload="$(zh_read_payload)"
+file="$(zh_get_file_path "${payload}")"
 [[ -z "${file}" ]] && exit 0
 
 # Only Vue files in frontend source paths
@@ -36,7 +37,7 @@ if ! grep -qE '"(@nuxtjs/i18n|vue-i18n)"' "${pkg_dir}/package.json" 2>/dev/null;
   exit 0
 fi
 
-content="$(zh_get_content)"
+content="$(zh_get_content "${payload}")"
 [[ -z "${content}" ]] && exit 0
 
 # Look for plausible hardcoded UI strings: text between > and < that's

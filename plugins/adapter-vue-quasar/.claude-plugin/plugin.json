@@ -1,0 +1,7 @@
+{
+  "name": "adapter-vue-quasar",
+  "version": "0.1.0",
+  "description": "Vue 3 + Quasar + Capacitor adapter — frontend patterns (Composition API, Pinia, FSD), Quasar/Capacitor mobile builds & signing, Vite bundle analysis, Lighthouse audits, and frontend deploy. Use when building or reviewing a Vue 3 + Quasar app. For Nuxt, use a Nuxt adapter instead.",
+  "author": { "name": "Valentyn Yakovliev" },
+  "keywords": ["vue", "quasar", "capacitor", "frontend", "pinia", "fsd", "vite", "bundle", "lighthouse", "adapter"]
+}

@@ -11,7 +11,8 @@ source "$(dirname "$0")/../lib/_common.sh"
 zh_globally_disabled && exit 0
 [[ "${ZODIAC_HOOK_BLOCK_SENSITIVE_DISABLE:-0}" == "1" ]] && exit 0
 
-file="$(zh_get_file_path)"
+payload="$(zh_read_payload)"
+file="$(zh_get_file_path "${payload}")"
 [[ -z "${file}" ]] && exit 0
 
 # Patterns to block. Order matters only for the error message.

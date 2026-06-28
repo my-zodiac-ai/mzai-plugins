@@ -16,7 +16,8 @@ source "$(dirname "$0")/../lib/_common.sh"
 zh_globally_disabled && exit 0
 [[ "${ZODIAC_HOOK_GSAP_DISABLE:-0}" == "1" ]] && exit 0
 
-file="$(zh_get_file_path)"
+payload="$(zh_read_payload)"
+file="$(zh_get_file_path "${payload}")"
 [[ -z "${file}" ]] && exit 0
 
 # Only Vue/TS/JS files
@@ -42,7 +43,7 @@ if ! grep -q '"gsap"' "${pkg_dir}/package.json" 2>/dev/null; then
   exit 0
 fi
 
-content="$(zh_get_content)"
+content="$(zh_get_content "${payload}")"
 [[ -z "${content}" ]] && exit 0
 
 # Match raw GSAP imports
